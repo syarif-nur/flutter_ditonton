@@ -48,8 +48,9 @@ class MovieTable extends Equatable {
   List<Object?> get props => [id, title, posterPath, overview];
 
   factory MovieTable.fromDTO(MovieModel movie) => MovieTable(
-      id: movie.id,
-      title: movie.title,
-      posterPath: movie.posterPath,
-      overview: movie.overview);
+        id: movie.id,
+        title: movie.title,
+        posterPath: movie.posterPath,
+        overview: movie.overview,
+      );
 }
