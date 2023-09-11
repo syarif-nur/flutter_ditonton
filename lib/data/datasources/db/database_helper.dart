@@ -5,6 +5,7 @@ import 'package:sqflite/sqflite.dart';
 
 class DatabaseHelper {
   static DatabaseHelper? _databaseHelper;
+
   DatabaseHelper._instance() {
     _databaseHelper = this;
   }
@@ -23,7 +24,6 @@ class DatabaseHelper {
   static const String _tblWatchlist = 'watchlist';
   static const String _tblCache = 'cache';
 
-
   Future<Database> _initDb() async {
     final path = await getDatabasesPath();
     final databasePath = '$path/ditonton.db';
@@ -38,7 +38,8 @@ class DatabaseHelper {
         id INTEGER PRIMARY KEY,
         title TEXT,
         overview TEXT,
-        posterPath TEXT
+        posterPath TEXT,
+        type INTEGER
       );
     ''');
     await db.execute('''
@@ -47,14 +48,17 @@ class DatabaseHelper {
         title TEXT,
         overview TEXT,
         posterPath TEXT,
-        category TEXT
+        category TEXT,
+        type INTEGER
       );
     ''');
   }
 
   Future<int> insertWatchlist(MovieTable movie) async {
+    final movieJson = movie.toJson();
+    movieJson['type'] = 1;
     final db = await database;
-    return await db!.insert(_tblWatchlist, movie.toJson());
+    return await db!.insert(_tblWatchlist, movieJson);
   }
 
   Future<int> removeWatchlist(MovieTable movie) async {
@@ -83,7 +87,10 @@ class DatabaseHelper {
 
   Future<List<Map<String, dynamic>>> getWatchlistMovies() async {
     final db = await database;
-    final List<Map<String, dynamic>> results = await db!.query(_tblWatchlist);
+    final List<Map<String, dynamic>> results = await db!.query(
+      _tblWatchlist,
+      where: 'type = 1',
+    );
 
     return results;
   }
@@ -95,6 +102,7 @@ class DatabaseHelper {
       for (final movie in movies) {
         final movieJson = movie.toJson();
         movieJson['category'] = category;
+        movieJson['type'] = 1;
         txn.insert(_tblCache, movieJson);
       }
     });
@@ -104,7 +112,7 @@ class DatabaseHelper {
     final db = await database;
     final List<Map<String, dynamic>> results = await db!.query(
       _tblCache,
-      where: 'category = ?',
+      where: 'category = ? AND type = 1',
       whereArgs: [category],
     );
     return results;
@@ -114,7 +122,7 @@ class DatabaseHelper {
     final db = await database;
     return await db!.delete(
       _tblCache,
-      where: 'category = ?',
+      where: 'category = ? AND type = 1',
       whereArgs: [category],
     );
   }
