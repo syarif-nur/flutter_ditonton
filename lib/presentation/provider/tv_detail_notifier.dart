@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 import '../../common/state_enum.dart';
 import '../../domain/usecases/get_tv_detail.dart';
-import '../../domain/usecases/get_watchlist_status.dart';
+import '../../domain/usecases/get_watchlist_status_tv.dart';
 import '../../domain/usecases/remove_watchlist_tv.dart';
 
 class TvDetailNotifier extends ChangeNotifier {
@@ -13,7 +13,7 @@ class TvDetailNotifier extends ChangeNotifier {
 
   final GetTvDetail getTvDetail;
 
-  final GetWatchListStatus getWatchListStatus;
+  final GetWatchListStatusTv getWatchListStatus;
   final SaveWatchListTv saveWatchlist;
   final RemoveWatchlistTv removeWatchlist;
 
