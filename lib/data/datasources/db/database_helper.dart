@@ -89,7 +89,7 @@ class DatabaseHelper {
     );
   }
 
-  Future<Map<String, dynamic>?> getMovieById(int id) async {
+  Future<Map<String, dynamic>?> getDataById(int id) async {
     final db = await database;
     final results = await db!.query(
       _tblWatchlist,
@@ -110,7 +110,15 @@ class DatabaseHelper {
       _tblWatchlist,
       where: 'type = 1',
     );
+    return results;
+  }
 
+  Future<List<Map<String, dynamic>>> getWatchListTv() async {
+    final db = await database;
+    final List<Map<String, dynamic>> results = await db!.query(
+      _tblWatchlist,
+      where: 'type = 2',
+    );
     return results;
   }
 

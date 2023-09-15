@@ -417,7 +417,7 @@ class MockDatabaseHelper extends _i1.Mock implements _i14.DatabaseHelper {
         returnValue: _i6.Future<int>.value(0),
       ) as _i6.Future<int>);
   @override
-  _i6.Future<Map<String, dynamic>?> getMovieById(int? id) =>
+  _i6.Future<Map<String, dynamic>?> getDataById(int? id) =>
       (super.noSuchMethod(
         Invocation.method(
           #getMovieById,

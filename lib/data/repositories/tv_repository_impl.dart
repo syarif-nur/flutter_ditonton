@@ -76,4 +76,28 @@ class TvRepositoryImpl implements TvRepository {
       return Left(DatabaseFailure(e.message));
     }
   }
+
+  @override
+  Future<Either<Failure, List<Tv>>> getPopularTv() {
+    // TODO: implement getPopularTv
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<Either<Failure, List<Tv>>> getTopRatedTv() {
+    // TODO: implement getTopRatedTv
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<Either<Failure, List<Tv>>> getTvRecommendations(int id) {
+    // TODO: implement getTvRecommendations
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<Either<Failure, List<Tv>>> getWatchlistTv() async {
+    final result = await localDataSource.getWatchlistTv();
+    return Right(result.map((data) => data.toEntity()).toList());
+  }
 }
