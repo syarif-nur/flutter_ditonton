@@ -24,13 +24,18 @@ class TvLocalDataSourceImpl implements TvLocalDataSource {
 
   @override
   Future<void> cacheNowPlayingTv(List<TvTable> tv) async {
-    await databaseHelper.clearCache('now playing');
-    // await databaseHelper.insertCacheTransaction(tv, 'now playing');
+    await databaseHelper.clearCacheTv('now playing');
+    await databaseHelper.insertCacheTransactionTv(tv, 'now playing');
   }
 
   @override
   Future<List<TvTable>> getCachedNowPlayingTv() async {
-    throw UnimplementedError();
+    final result = await databaseHelper.getCacheTv('now playing');
+    if (result.length > 0) {
+      return result.map((data) => TvTable.fromMap(data)).toList();
+    } else {
+      throw CacheException("Can't get the data :(");
+    }
   }
 
   @override
