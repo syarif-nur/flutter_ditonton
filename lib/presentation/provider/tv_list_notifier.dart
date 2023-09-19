@@ -1,5 +1,7 @@
 import 'package:ditonton/domain/entities/tv.dart';
 import 'package:ditonton/domain/usecases/get_now_playing_tv.dart';
+import 'package:ditonton/domain/usecases/get_popular_tv.dart';
+import 'package:ditonton/domain/usecases/get_top_rated_tv.dart';
 import 'package:flutter/cupertino.dart';
 
 import '../../common/state_enum.dart';
@@ -13,15 +15,37 @@ class TvListNotifier extends ChangeNotifier {
 
   RequestState get nowPlayingState => _nowPlayingState;
 
+  var _popularTv = <Tv>[];
+
+  List<Tv> get popularTv => _popularTv;
+
+  RequestState _popularTvState = RequestState.Empty;
+
+  RequestState get popularTvState => _popularTvState;
+
+  var _topRatedTv = <Tv>[];
+
+  List<Tv> get topRatedTv => _topRatedTv;
+
+  RequestState _topRatedTvState = RequestState.Empty;
+
+  RequestState get topRatedTvState => _topRatedTvState;
+
   String _message = '';
 
   String get message => _message;
 
-  TvListNotifier({required this.getNowPlayingTv});
+  TvListNotifier({
+    required this.getNowPlayingTv,
+    required this.getPopularTv,
+    required this.getTopRatedTv,
+  });
 
   final GetNowPlayingTv getNowPlayingTv;
+  final GetTopRatedTv getTopRatedTv;
+  final GetPopularTv getPopularTv;
 
-  Future<void> fetchNowPlayingMovies() async {
+  Future<void> fetchNowPlayingTv() async {
     _nowPlayingState = RequestState.Loading;
     notifyListeners();
 
@@ -35,6 +59,44 @@ class TvListNotifier extends ChangeNotifier {
       (tvData) {
         _nowPlayingState = RequestState.Loaded;
         _nowPlayingTv = tvData;
+        notifyListeners();
+      },
+    );
+  }
+
+  Future<void> fetchPopularTv() async {
+    _popularTvState = RequestState.Loading;
+    notifyListeners();
+
+    final result = await getPopularTv.execute();
+    result.fold(
+      (failure) {
+        _popularTvState = RequestState.Error;
+        _message = failure.message;
+        notifyListeners();
+      },
+      (moviesData) {
+        _popularTvState = RequestState.Loaded;
+        _popularTv = moviesData;
+        notifyListeners();
+      },
+    );
+  }
+
+  Future<void> fetchTopRatedTv() async {
+    _topRatedTvState = RequestState.Loading;
+    notifyListeners();
+
+    final result = await getTopRatedTv.execute();
+    result.fold(
+      (failure) {
+        _topRatedTvState = RequestState.Error;
+        _message = failure.message;
+        notifyListeners();
+      },
+      (moviesData) {
+        _topRatedTvState = RequestState.Loaded;
+        _topRatedTv = moviesData;
         notifyListeners();
       },
     );

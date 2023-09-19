@@ -24,9 +24,9 @@ class _HomeTvPageState extends State<HomeTvPage> {
   void initState() {
     super.initState();
     Future.microtask(() => Provider.of<TvListNotifier>(context, listen: false)
-      ..fetchNowPlayingMovies());
-    // ..fetchPopularMovies()
-    // ..fetchTopRatedMovies());
+      ..fetchNowPlayingTv()
+      ..fetchPopularTv()
+      ..fetchTopRatedTv());
   }
 
   @override
@@ -66,47 +66,66 @@ class _HomeTvPageState extends State<HomeTvPage> {
                     return Text('Failed');
                   }
                 }),
-                // _buildSubHeading(
-                //   title: 'Popular',
-                //   onTap: () => Navigator.pushNamed(
-                //       context, PopularMoviesPage.ROUTE_NAME),
-                // ),
-                // Consumer<MovieListNotifier>(builder: (context, data, child) {
-                //   final state = data.popularMoviesState;
-                //   if (state == RequestState.Loading) {
-                //     return Center(
-                //       child: CircularProgressIndicator(),
-                //     );
-                //   } else if (state == RequestState.Loaded) {
-                //     return MovieList(data.popularMovies);
-                //   } else {
-                //     return Text('Failed');
-                //   }
-                // }),
-                // _buildSubHeading(
-                //   title: 'Top Rated',
-                //   onTap: () => Navigator.pushNamed(
-                //       context, TopRatedMoviesPage.ROUTE_NAME),
-                // ),
-                // Consumer<MovieListNotifier>(
-                //   builder: (context, data, child) {
-                //     final state = data.topRatedMoviesState;
-                //     if (state == RequestState.Loading) {
-                //       return Center(
-                //         child: CircularProgressIndicator(),
-                //       );
-                //     } else if (state == RequestState.Loaded) {
-                //       return MovieList(data.topRatedMovies);
-                //     } else {
-                //       return Text('Failed');
-                //     }
-                //   },
-                // ),
+                _buildSubHeading(title: 'Popular', onTap: () => {}
+                    // Navigator.pushNamed(
+                    //   context, PopularTvPage.ROUTE_NAME),
+                    ),
+                Consumer<TvListNotifier>(builder: (context, data, child) {
+                  final state = data.popularTvState;
+                  if (state == RequestState.Loading) {
+                    return Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  } else if (state == RequestState.Loaded) {
+                    return TvList(data.popularTv);
+                  } else {
+                    return Text('Failed');
+                  }
+                }),
+                _buildSubHeading(title: 'Top Rated', onTap: () => {}
+                    // Navigator.pushNamed(
+                    // context, TopRatedMoviesPage.ROUTE_NAME),
+                    ),
+                Consumer<TvListNotifier>(
+                  builder: (context, data, child) {
+                    final state = data.topRatedTvState;
+                    if (state == RequestState.Loading) {
+                      return Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    } else if (state == RequestState.Loaded) {
+                      return TvList(data.topRatedTv);
+                    } else {
+                      return Text('Failed');
+                    }
+                  },
+                ),
               ],
             ),
           ),
         ),
       ),
+    );
+  }
+
+  Row _buildSubHeading({required String title, required Function() onTap}) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Text(
+          title,
+          style: kHeading6,
+        ),
+        InkWell(
+          onTap: onTap,
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              children: [Text('See More'), Icon(Icons.arrow_forward_ios)],
+            ),
+          ),
+        ),
+      ],
     );
   }
 }
