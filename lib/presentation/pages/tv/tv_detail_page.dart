@@ -1,8 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ditonton/common/constants.dart';
 import 'package:ditonton/domain/entities/genre.dart';
-import 'package:ditonton/domain/entities/movie.dart';
-import 'package:ditonton/domain/entities/movie_detail.dart';
+import 'package:ditonton/domain/entities/tv.dart';
 import 'package:ditonton/domain/entities/tv_detail.dart';
 import 'package:ditonton/presentation/provider/movie_detail_notifier.dart';
 import 'package:ditonton/common/state_enum.dart';
@@ -48,7 +47,7 @@ class _TvDetailPageState extends State<TvDetailPage> {
             return SafeArea(
               child: DetailContent(
                 tv,
-                // provider.movieRecommendations,
+                provider.tvRecommendations,
                 provider.isAddedToWatchlist,
               ),
             );
@@ -64,12 +63,12 @@ class _TvDetailPageState extends State<TvDetailPage> {
 class DetailContent extends StatelessWidget {
   final TvDetail tv;
 
-  // final List<Movie> recommendations;
+  final List<Tv> recommendations;
   final bool isAddedWatchlist;
 
   DetailContent(
     this.tv,
-    // this.recommendations,
+    this.recommendations,
     this.isAddedWatchlist,
   );
 
@@ -204,43 +203,43 @@ class DetailContent extends StatelessWidget {
                                 } else if (data.recommendationState ==
                                     RequestState.Loaded) {
                                   return Container(
-                                      // height: 150,
-                                      // child: ListView.builder(
-                                      //   scrollDirection: Axis.horizontal,
-                                      //   itemBuilder: (context, index) {
-                                      //     final movie = recommendations[index];
-                                      //     return Padding(
-                                      //       padding: const EdgeInsets.all(4.0),
-                                      //       child: InkWell(
-                                      //         onTap: () {
-                                      //           Navigator.pushReplacementNamed(
-                                      //             context,
-                                      //             TvDetailPage.ROUTE_NAME,
-                                      //             arguments: movie.id,
-                                      //           );
-                                      //         },
-                                      //         child: ClipRRect(
-                                      //           borderRadius: BorderRadius.all(
-                                      //             Radius.circular(8),
-                                      //           ),
-                                      //           child: CachedNetworkImage(
-                                      //             imageUrl:
-                                      //                 'https://image.tmdb.org/t/p/w500${movie.posterPath}',
-                                      //             placeholder: (context, url) =>
-                                      //                 Center(
-                                      //               child:
-                                      //                   CircularProgressIndicator(),
-                                      //             ),
-                                      //             errorWidget:
-                                      //                 (context, url, error) =>
-                                      //                     Icon(Icons.error),
-                                      //           ),
-                                      //         ),
-                                      //       ),
-                                      //     );
-                                      //   },
-                                      //   itemCount: recommendations.length,
-                                      // ),
+                                      height: 150,
+                                      child: ListView.builder(
+                                        scrollDirection: Axis.horizontal,
+                                        itemBuilder: (context, index) {
+                                          final tv = recommendations[index];
+                                          return Padding(
+                                            padding: const EdgeInsets.all(4.0),
+                                            child: InkWell(
+                                              onTap: () {
+                                                Navigator.pushReplacementNamed(
+                                                  context,
+                                                  TvDetailPage.ROUTE_NAME,
+                                                  arguments: tv.id,
+                                                );
+                                              },
+                                              child: ClipRRect(
+                                                borderRadius: BorderRadius.all(
+                                                  Radius.circular(8),
+                                                ),
+                                                child: CachedNetworkImage(
+                                                  imageUrl:
+                                                      'https://image.tmdb.org/t/p/w500${tv.posterPath}',
+                                                  placeholder: (context, url) =>
+                                                      Center(
+                                                    child:
+                                                        CircularProgressIndicator(),
+                                                  ),
+                                                  errorWidget:
+                                                      (context, url, error) =>
+                                                          Icon(Icons.error),
+                                                ),
+                                              ),
+                                            ),
+                                          );
+                                        },
+                                        itemCount: recommendations.length,
+                                      ),
                                       );
                                 } else {
                                   return Container();

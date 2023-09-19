@@ -87,26 +87,56 @@ class TvRepositoryImpl implements TvRepository {
   }
 
   @override
-  Future<Either<Failure, List<Tv>>> getPopularTv() {
-    // TODO: implement getPopularTv
-    throw UnimplementedError();
+  Future<Either<Failure, List<Tv>>> getPopularTv() async {
+    try {
+      final result = await remoteDataSource.getPopularTv();
+      return Right(result.map((model) => model.toEntity()).toList());
+    } on ServerException {
+      return Left(ServerFailure(''));
+    } on SocketException {
+      return Left(ConnectionFailure('Failed to connect to the network'));
+    }
   }
 
   @override
-  Future<Either<Failure, List<Tv>>> getTopRatedTv() {
-    // TODO: implement getTopRatedTv
-    throw UnimplementedError();
+  Future<Either<Failure, List<Tv>>> getTopRatedTv() async {
+    try {
+      final result = await remoteDataSource.getTopRatedTv();
+      return Right(result.map((model) => model.toEntity()).toList());
+    } on ServerException {
+      return Left(ServerFailure(''));
+    } on SocketException {
+      return Left(ConnectionFailure('Failed to connect to the network'));
+    }
   }
 
   @override
-  Future<Either<Failure, List<Tv>>> getTvRecommendations(int id) {
-    // TODO: implement getTvRecommendations
-    throw UnimplementedError();
+  Future<Either<Failure, List<Tv>>> getTvRecommendations(int id) async {
+    try {
+      final result = await remoteDataSource.getTvRecommendations(id);
+      return Right(result.map((model) => model.toEntity()).toList());
+    } on ServerException {
+      return Left(ServerFailure(''));
+    } on SocketException {
+      return Left(ConnectionFailure('Failed to connect to the network'));
+    }
   }
 
   @override
   Future<Either<Failure, List<Tv>>> getWatchlistTv() async {
     final result = await localDataSource.getWatchlistTv();
     return Right(result.map((data) => data.toEntity()).toList());
+  }
+
+  @override
+  Future<Either<Failure, List<Tv>>> searchTv(String query) async {
+    try {
+      final result = await remoteDataSource.searchTv(query);
+      return Right(result.map((model) => model.toEntity()).toList());
+    } on ServerException {
+      return Left(ServerFailure(''));
+    } on SocketException {
+      return Left(ConnectionFailure('Failed to connect to the network'));
+    }
   }
 }
