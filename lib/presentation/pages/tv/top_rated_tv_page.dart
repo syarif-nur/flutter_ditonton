@@ -1,35 +1,36 @@
-import 'package:ditonton/presentation/provider/popular_tv_notifier.dart';
+import 'package:ditonton/presentation/provider/top_rated_tv_notifier.dart';
 import 'package:ditonton/presentation/widgets/tv_card_list.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../../common/state_enum.dart';
 
-class PopularTvPage extends StatefulWidget {
-  static const ROUTE_NAME = '/popular-tv';
+class TopRatedTvPage extends StatefulWidget {
+
+  static const ROUTE_NAME = '/top-rated-tv';
 
   @override
-  State<PopularTvPage> createState() => _PopularTvPageState();
+  State<TopRatedTvPage> createState() => _TopRatedTvPageState();
 }
 
-class _PopularTvPageState extends State<PopularTvPage> {
+class _TopRatedTvPageState extends State<TopRatedTvPage> {
   @override
   void initState() {
     super.initState();
     Future.microtask(() =>
-        Provider.of<PopularTvNotifier>(context, listen: false)
-            .fetchPopularTv());
+        Provider.of<TopRatedTvNotifier>(context, listen: false)
+            .fetchTopRatedTv());
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Popular Tv Series'),
+        title: Text('Top Rated Tv Series'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: Consumer<PopularTvNotifier>(
+        child: Consumer<TopRatedTvNotifier>(
           builder: (context, data, child) {
             if (data.state == RequestState.Loading) {
               return Center(

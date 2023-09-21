@@ -1,4 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:ditonton/presentation/pages/tv/popular_tv_page.dart';
+import 'package:ditonton/presentation/pages/tv/search_page_tv.dart';
+import 'package:ditonton/presentation/pages/tv/top_rated_tv_page.dart';
 import 'package:ditonton/presentation/pages/tv/tv_detail_page.dart';
 import 'package:ditonton/presentation/provider/tv_list_notifier.dart';
 import 'package:flutter/material.dart';
@@ -38,7 +41,7 @@ class _HomeTvPageState extends State<HomeTvPage> {
           actions: [
             IconButton(
               onPressed: () {
-                // Navigator.pushNamed(context, SearchPage.ROUTE_NAME);
+                Navigator.pushNamed(context, SearchTvPage.ROUTE_NAME);
               },
               icon: Icon(Icons.search),
             )
@@ -66,10 +69,12 @@ class _HomeTvPageState extends State<HomeTvPage> {
                     return Text('Failed');
                   }
                 }),
-                _buildSubHeading(title: 'Popular', onTap: () => {}
-                    // Navigator.pushNamed(
-                    //   context, PopularTvPage.ROUTE_NAME),
-                    ),
+                _buildSubHeading(
+                    title: 'Popular',
+                    onTap: () => {
+                          Navigator.pushNamed(
+                              context, PopularTvPage.ROUTE_NAME),
+                        }),
                 Consumer<TvListNotifier>(builder: (context, data, child) {
                   final state = data.popularTvState;
                   if (state == RequestState.Loading) {
@@ -82,10 +87,12 @@ class _HomeTvPageState extends State<HomeTvPage> {
                     return Text('Failed');
                   }
                 }),
-                _buildSubHeading(title: 'Top Rated', onTap: () => {}
-                    // Navigator.pushNamed(
-                    // context, TopRatedMoviesPage.ROUTE_NAME),
-                    ),
+                _buildSubHeading(
+                    title: 'Top Rated',
+                    onTap: () => {
+                          Navigator.pushNamed(
+                          context, TopRatedTvPage.ROUTE_NAME),
+                        }),
                 Consumer<TvListNotifier>(
                   builder: (context, data, child) {
                     final state = data.topRatedTvState;

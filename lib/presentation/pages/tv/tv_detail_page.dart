@@ -190,7 +190,7 @@ class DetailContent extends StatelessWidget {
                               'Recommendations',
                               style: kHeading6,
                             ),
-                            Consumer<MovieDetailNotifier>(
+                            Consumer<TvDetailNotifier>(
                               builder: (context, data, child) {
                                 if (data.recommendationState ==
                                     RequestState.Loading) {

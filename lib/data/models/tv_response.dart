@@ -25,7 +25,7 @@ class TvResponse extends Equatable {
         page: json["page"],
         results: List<TvModel>.from((json["results"] as List)
             .map((x) => TvModel.fromJson(x))
-            .where((element) => element.posterPath != null)),
+            .where((element) => element.posterPath != null && element.overview != "")),
         totalPages: json["total_pages"],
         totalResults: json["total_results"],
       );
