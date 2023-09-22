@@ -1,4 +1,3 @@
-import 'package:ditonton/data/models/genre_model.dart';
 import 'package:ditonton/domain/entities/genre.dart';
 import 'package:equatable/equatable.dart';
 
@@ -22,7 +21,7 @@ class TvDetail extends Equatable{
   final bool adult;
   final String backdropPath;
   final List<int> episodeRunTime;
-  final DateTime firstAirDate;
+  final String? firstAirDate;
   final List<Genre> genres;
   final int id;
   final String name;
@@ -33,6 +32,19 @@ class TvDetail extends Equatable{
   final int voteCount;
 
   @override
-  List<Object?> get props => throw UnimplementedError();
+  List<Object?> get props => [
+    adult,
+    backdropPath,
+    episodeRunTime,
+    firstAirDate,
+    genres,
+    id,
+    name,
+    originalName,
+    overview,
+    posterPath,
+    voteAverage,
+    voteCount
+  ];
 
 }

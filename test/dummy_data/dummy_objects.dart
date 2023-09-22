@@ -1,7 +1,10 @@
 import 'package:ditonton/data/models/movie_table.dart';
+import 'package:ditonton/data/models/tv_table.dart';
 import 'package:ditonton/domain/entities/genre.dart';
 import 'package:ditonton/domain/entities/movie.dart';
 import 'package:ditonton/domain/entities/movie_detail.dart';
+import 'package:ditonton/domain/entities/tv.dart';
+import 'package:ditonton/domain/entities/tv_detail.dart';
 
 final testMovie = Movie(
   adult: false,
@@ -71,4 +74,57 @@ final testMovieMap = {
   'overview': 'overview',
   'posterPath': 'posterPath',
   'title': 'title',
+};
+
+final testTvCache = TvTable(
+  id: 60625,
+  overview:
+  "Rick is a mentally-unbalanced but scientifically gifted old man who has recently reconnected with his family. He spends most of his time involving his young grandson Morty in dangerous, outlandish adventures throughout space and alternate universes. Compounded with Morty's already unstable family life, these events cause Morty much distress at home and school.",
+  posterPath: "/cvhNj9eoRBe5SxjCbQTkh05UP5K.jpg",
+  name: "Rick and Morty",
+);
+
+final testTvFromCache = Tv.watchlist(
+  id: 60625,
+  overview:
+  "Rick is a mentally-unbalanced but scientifically gifted old man who has recently reconnected with his family. He spends most of his time involving his young grandson Morty in dangerous, outlandish adventures throughout space and alternate universes. Compounded with Morty's already unstable family life, these events cause Morty much distress at home and school.",
+  posterPath: "/cvhNj9eoRBe5SxjCbQTkh05UP5K.jpg",
+  name: "Rick and Morty",
+);
+
+final testTvDetail = TvDetail(
+  adult: false,
+  backdropPath: 'backdropPath',
+  genres: [Genre(id: 16, name: 'Animation')],
+  id: 1,
+  originalName: 'originalTitle',
+  overview: 'overview',
+  posterPath: 'posterPath',
+  firstAirDate: 'firstAirDate',
+  name: 'name',
+  voteAverage: 1,
+  voteCount: 1,
+  episodeRunTime: [22],
+);
+
+
+final testTvTable = TvTable(
+  id: 1,
+  name: 'name',
+  posterPath: 'posterPath',
+  overview: 'overview',
+);
+
+final testWatchlistTv = Tv.watchlist(
+  id: 1,
+  name: 'name',
+  posterPath: 'posterPath',
+  overview: 'overview',
+);
+
+final testTvMap = {
+  'id': 1,
+  'overview': 'overview',
+  'posterPath': 'posterPath',
+  'title': 'name',
 };
