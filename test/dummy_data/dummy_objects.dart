@@ -23,10 +23,27 @@ final testMovie = Movie(
   voteCount: 13507,
 );
 
+final testTv = Tv(
+  backdropPath: "/9In9QgVJx7PlFOAgVHCKKSbo605.jpg",
+  genreIds: [16, 35, 10765, 10759],
+  id: 60625,
+  originalName: "Rick and Morty",
+  overview:
+      "Rick is a mentally-unbalanced but scientifically gifted old man who has recently reconnected with his family. He spends most of his time involving his young grandson Morty in dangerous, outlandish adventures throughout space and alternate universes. Compounded with Morty's already unstable family life, these events cause Morty much distress at home and school.",
+  popularity: 1386.559,
+  posterPath: "/cvhNj9eoRBe5SxjCbQTkh05UP5K.jpg",
+  firstAirDate: "2013-12-02",
+  name: "Rick and Morty",
+  voteAverage: 8.701,
+  voteCount: 8572,
+  originCountry: ["US"],
+  originalLanguage: "en",
+);
+
 final testMovieCache = MovieTable(
   id: 557,
   overview:
-  'After being bitten by a genetically altered spider, nerdy high school student Peter Parker is endowed with amazing powers to become the Amazing superhero known as Spider-Man.',
+      'After being bitten by a genetically altered spider, nerdy high school student Peter Parker is endowed with amazing powers to become the Amazing superhero known as Spider-Man.',
   posterPath: '/rweIrveL43TaxUN0akQEaAXL6x0.jpg',
   title: 'Spider-Man',
 );
@@ -34,11 +51,13 @@ final testMovieCache = MovieTable(
 final testMovieFromCache = Movie.watchlist(
   id: 557,
   overview:
-  'After being bitten by a genetically altered spider, nerdy high school student Peter Parker is endowed with amazing powers to become the Amazing superhero known as Spider-Man.',
+      'After being bitten by a genetically altered spider, nerdy high school student Peter Parker is endowed with amazing powers to become the Amazing superhero known as Spider-Man.',
   posterPath: '/rweIrveL43TaxUN0akQEaAXL6x0.jpg',
   title: 'Spider-Man',
 );
 final testMovieList = [testMovie];
+
+final testTvList = [testTv];
 
 final testMovieDetail = MovieDetail(
   adult: false,
@@ -79,7 +98,7 @@ final testMovieMap = {
 final testTvCache = TvTable(
   id: 60625,
   overview:
-  "Rick is a mentally-unbalanced but scientifically gifted old man who has recently reconnected with his family. He spends most of his time involving his young grandson Morty in dangerous, outlandish adventures throughout space and alternate universes. Compounded with Morty's already unstable family life, these events cause Morty much distress at home and school.",
+      "Rick is a mentally-unbalanced but scientifically gifted old man who has recently reconnected with his family. He spends most of his time involving his young grandson Morty in dangerous, outlandish adventures throughout space and alternate universes. Compounded with Morty's already unstable family life, these events cause Morty much distress at home and school.",
   posterPath: "/cvhNj9eoRBe5SxjCbQTkh05UP5K.jpg",
   name: "Rick and Morty",
 );
@@ -87,7 +106,7 @@ final testTvCache = TvTable(
 final testTvFromCache = Tv.watchlist(
   id: 60625,
   overview:
-  "Rick is a mentally-unbalanced but scientifically gifted old man who has recently reconnected with his family. He spends most of his time involving his young grandson Morty in dangerous, outlandish adventures throughout space and alternate universes. Compounded with Morty's already unstable family life, these events cause Morty much distress at home and school.",
+      "Rick is a mentally-unbalanced but scientifically gifted old man who has recently reconnected with his family. He spends most of his time involving his young grandson Morty in dangerous, outlandish adventures throughout space and alternate universes. Compounded with Morty's already unstable family life, these events cause Morty much distress at home and school.",
   posterPath: "/cvhNj9eoRBe5SxjCbQTkh05UP5K.jpg",
   name: "Rick and Morty",
 );
@@ -106,7 +125,6 @@ final testTvDetail = TvDetail(
   voteCount: 1,
   episodeRunTime: [22],
 );
-
 
 final testTvTable = TvTable(
   id: 1,

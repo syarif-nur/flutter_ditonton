@@ -10,6 +10,7 @@ import 'package:provider/provider.dart';
 import '../../../common/constants.dart';
 import '../../../common/state_enum.dart';
 import '../../../domain/entities/tv.dart';
+import 'now_playing_tv_page.dart';
 
 class HomeTvPage extends StatefulWidget {
   static const ROUTE_NAME = '/tv';
@@ -53,10 +54,12 @@ class _HomeTvPageState extends State<HomeTvPage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  'Now Playing',
-                  style: kHeading6,
-                ),
+                _buildSubHeading(
+                    title: 'Now Playing',
+                    onTap: () => {
+                      Navigator.pushNamed(
+                          context, NowPlayingTvPage.ROUTE_NAME),
+                    }),
                 Consumer<TvListNotifier>(builder: (context, data, child) {
                   final state = data.nowPlayingState;
                   if (state == RequestState.Loading) {
