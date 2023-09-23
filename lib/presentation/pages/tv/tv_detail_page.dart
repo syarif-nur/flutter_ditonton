@@ -26,7 +26,7 @@ class _TvDetailPageState extends State<TvDetailPage> {
     super.initState();
     Future.microtask(() {
       Provider.of<TvDetailNotifier>(context, listen: false)
-          .fetchMovieDetail(widget.id);
+          .fetchTvDetail(widget.id);
       Provider.of<TvDetailNotifier>(context, listen: false)
           .loadWatchlistStatus(widget.id);
     });

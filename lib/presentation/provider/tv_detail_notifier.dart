@@ -52,7 +52,7 @@ class TvDetailNotifier extends ChangeNotifier {
 
   RequestState get recommendationState => _recommendationState;
 
-  Future<void> fetchMovieDetail(int id) async {
+  Future<void> fetchTvDetail(int id) async {
     _tvState = RequestState.Loading;
     notifyListeners();
     final detailResult = await getTvDetail.execute(id);
