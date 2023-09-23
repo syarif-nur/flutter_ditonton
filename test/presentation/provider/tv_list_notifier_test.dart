@@ -38,8 +38,6 @@ void main() {
       });
   });
 
-  final tId = 1;
-
   final tTv = Tv(
     backdropPath: "/9In9QgVJx7PlFOAgVHCKKSbo605.jpg",
     genreIds: [16, 35, 10765, 10759],
