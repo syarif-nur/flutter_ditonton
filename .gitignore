@@ -47,3 +47,5 @@ app.*.map.json
 
 #coverage
 /coverage/*
+core/coverage/lcov.info
+core/coverage/*
