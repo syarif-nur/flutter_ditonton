@@ -49,3 +49,4 @@ app.*.map.json
 /coverage/*
 core/coverage/lcov.info
 core/coverage/*
+core/coverage/lcov.info
