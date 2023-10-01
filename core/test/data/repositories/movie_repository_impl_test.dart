@@ -1,8 +1,8 @@
 import 'dart:io';
 
 import 'package:dartz/dartz.dart';
-import 'package:core/utils//exception.dart';
-import 'package:core/utils//failure.dart';
+import 'package:core/utils/exception.dart';
+import 'package:core/utils/failure.dart';
 import 'package:core/data/models/genre_model.dart';
 import 'package:core/data/models/movie_detail_model.dart';
 import 'package:core/data/models/movie_model.dart';
