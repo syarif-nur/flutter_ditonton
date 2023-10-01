@@ -1,13 +1,13 @@
+import 'package:core/presentation/widgets/movie_card_list.dart';
+import 'package:core/styles/text_styles.dart';
+import 'package:core/utils/state_enum.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../../styles/text_styles.dart';
-import '../../../utils/state_enum.dart';
-import '../../provider/tv_search_notifier.dart';
-import '../../widgets/tv_card_list.dart';
+import '../../provider/movie_search_notifier.dart';
 
-class SearchTvPage extends StatelessWidget {
-  static const ROUTE_NAME = '/search-tv';
+class SearchPage extends StatelessWidget {
+  static const ROUTE_NAME = '/search';
 
   @override
   Widget build(BuildContext context) {
@@ -22,8 +22,8 @@ class SearchTvPage extends StatelessWidget {
           children: [
             TextField(
               onSubmitted: (query) {
-                Provider.of<TvSearchNotifier>(context, listen: false)
-                    .fetchTvSearch(query);
+                Provider.of<MovieSearchNotifier>(context, listen: false)
+                    .fetchMovieSearch(query);
               },
               decoration: InputDecoration(
                 hintText: 'Search title',
@@ -37,7 +37,7 @@ class SearchTvPage extends StatelessWidget {
               'Search Result',
               style: kHeading6,
             ),
-            Consumer<TvSearchNotifier>(
+            Consumer<MovieSearchNotifier>(
               builder: (context, data, child) {
                 if (data.state == RequestState.Loading) {
                   return Center(
@@ -49,8 +49,8 @@ class SearchTvPage extends StatelessWidget {
                     child: ListView.builder(
                       padding: const EdgeInsets.all(8),
                       itemBuilder: (context, index) {
-                        final tv = data.searchResult[index];
-                        return TvCard(tv);
+                        final movie = data.searchResult[index];
+                        return MovieCard(movie);
                       },
                       itemCount: result.length,
                     ),

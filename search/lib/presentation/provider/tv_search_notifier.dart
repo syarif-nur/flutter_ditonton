@@ -1,9 +1,9 @@
 
+import 'package:core/domain/entities/tv.dart';
+import 'package:core/utils/state_enum.dart';
 import 'package:flutter/material.dart';
 
-import '../../domain/entities/tv.dart';
-import '../../domain/usecases/search_tv.dart';
-import '../../utils/state_enum.dart';
+import '../../domain/usecase/search_tv.dart';
 
 
 class TvSearchNotifier extends ChangeNotifier{
