@@ -43,13 +43,19 @@ import 'package:get_it/get_it.dart';
 import 'package:http/http.dart' as http;
 import 'package:search/domain/usecase/search_movies.dart';
 import 'package:search/domain/usecase/search_tv.dart';
+import 'package:search/presentation/bloc/search_bloc.dart';
 import 'package:search/presentation/provider/movie_search_notifier.dart';
 import 'package:search/presentation/provider/tv_search_notifier.dart';
-
 
 final locator = GetIt.instance;
 
 void init() {
+  //bloc
+  locator.registerFactory(
+    () => SearchBloc(
+      locator(),
+    ),
+  );
   // provider
   locator.registerFactory(
     () => MovieListNotifier(
