@@ -51,6 +51,7 @@ class _HomeMoviePageState extends State<HomeMoviePage> {
               title: Text('Movies'),
               onTap: () {
                 Navigator.pop(context);
+                // throw Exception();
               },
             ),
             ListTile(
