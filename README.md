@@ -1,1 +1,1 @@
-My project
+[![Codemagic build status](https://api.codemagic.io/apps/6592d4ce861e2a53e176f2c6/6592d4ce861e2a53e176f2c5/status_badge.svg)](https://codemagic.io/apps/6592d4ce861e2a53e176f2c6/6592d4ce861e2a53e176f2c5/latest_build)
