@@ -19,9 +19,7 @@ class DatabaseHelper {
   static Database? _database;
 
   Future<Database?> get database async {
-    if (_database == null) {
-      _database = await _initDb();
-    }
+    _database ??= await _initDb();
     return _database;
   }
 
@@ -39,9 +37,11 @@ class DatabaseHelper {
     var db = await openDatabase(
       databasePath,
       version: 1,
-      password: encrypt("thisismykey16Bit"),
       onCreate: _onCreate,
+      password: encrypt('Your secure password...'),
     );
+
+
     return db;
   }
 
@@ -55,6 +55,7 @@ class DatabaseHelper {
         type INTEGER
       );
     ''');
+
     await db.execute('''
       CREATE TABLE  $_tblCache (
         id INTEGER PRIMARY KEY,
