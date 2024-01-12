@@ -38,7 +38,7 @@ class DatabaseHelper {
       databasePath,
       version: 1,
       onCreate: _onCreate,
-      password: encrypt('Your secure password...'),
+      password: 'Your secure password...',
     );
 
 
