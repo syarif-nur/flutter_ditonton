@@ -3,11 +3,13 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'dart:async' as _i3;
+import 'dart:async' as _i4;
 
-import 'package:bloc/bloc.dart' as _i4;
+import 'package:bloc/bloc.dart' as _i5;
 import 'package:core/presentation/bloc/movie/detail/detail_movie_bloc.dart'
     as _i2;
+import 'package:core/presentation/bloc/movie/recommendation/recommendation_movie_bloc.dart'
+    as _i3;
 import 'package:mockito/mockito.dart' as _i1;
 
 // ignore_for_file: type=lint
@@ -34,6 +36,17 @@ class _FakeDetailMovieState_0 extends _i1.SmartFake
         );
 }
 
+class _FakeRecommendationMovieState_1 extends _i1.SmartFake
+    implements _i3.RecommendationMovieState {
+  _FakeRecommendationMovieState_1(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
+}
+
 /// A class which mocks [DetailMovieBloc].
 ///
 /// See the documentation for Mockito's code generation for more information.
@@ -52,10 +65,10 @@ class MockDetailMovieBloc extends _i1.Mock implements _i2.DetailMovieBloc {
       ) as _i2.DetailMovieState);
 
   @override
-  _i3.Stream<_i2.DetailMovieState> get stream => (super.noSuchMethod(
+  _i4.Stream<_i2.DetailMovieState> get stream => (super.noSuchMethod(
         Invocation.getter(#stream),
-        returnValue: _i3.Stream<_i2.DetailMovieState>.empty(),
-      ) as _i3.Stream<_i2.DetailMovieState>);
+        returnValue: _i4.Stream<_i2.DetailMovieState>.empty(),
+      ) as _i4.Stream<_i2.DetailMovieState>);
 
   @override
   bool get isClosed => (super.noSuchMethod(
@@ -92,8 +105,8 @@ class MockDetailMovieBloc extends _i1.Mock implements _i2.DetailMovieBloc {
 
   @override
   void on<E extends _i2.DetailMovieEvent>(
-    _i4.EventHandler<E, _i2.DetailMovieState>? handler, {
-    _i4.EventTransformer<E>? transformer,
+    _i5.EventHandler<E, _i2.DetailMovieState>? handler, {
+    _i5.EventTransformer<E>? transformer,
   }) =>
       super.noSuchMethod(
         Invocation.method(
@@ -106,7 +119,7 @@ class MockDetailMovieBloc extends _i1.Mock implements _i2.DetailMovieBloc {
 
   @override
   void onTransition(
-          _i4.Transition<_i2.DetailMovieEvent, _i2.DetailMovieState>?
+          _i5.Transition<_i2.DetailMovieEvent, _i2.DetailMovieState>?
               transition) =>
       super.noSuchMethod(
         Invocation.method(
@@ -117,17 +130,154 @@ class MockDetailMovieBloc extends _i1.Mock implements _i2.DetailMovieBloc {
       );
 
   @override
-  _i3.Future<void> close() => (super.noSuchMethod(
+  _i4.Future<void> close() => (super.noSuchMethod(
         Invocation.method(
           #close,
           [],
         ),
-        returnValue: _i3.Future<void>.value(),
-        returnValueForMissingStub: _i3.Future<void>.value(),
-      ) as _i3.Future<void>);
+        returnValue: _i4.Future<void>.value(),
+        returnValueForMissingStub: _i4.Future<void>.value(),
+      ) as _i4.Future<void>);
 
   @override
-  void onChange(_i4.Change<_i2.DetailMovieState>? change) => super.noSuchMethod(
+  void onChange(_i5.Change<_i2.DetailMovieState>? change) => super.noSuchMethod(
+        Invocation.method(
+          #onChange,
+          [change],
+        ),
+        returnValueForMissingStub: null,
+      );
+
+  @override
+  void addError(
+    Object? error, [
+    StackTrace? stackTrace,
+  ]) =>
+      super.noSuchMethod(
+        Invocation.method(
+          #addError,
+          [
+            error,
+            stackTrace,
+          ],
+        ),
+        returnValueForMissingStub: null,
+      );
+
+  @override
+  void onError(
+    Object? error,
+    StackTrace? stackTrace,
+  ) =>
+      super.noSuchMethod(
+        Invocation.method(
+          #onError,
+          [
+            error,
+            stackTrace,
+          ],
+        ),
+        returnValueForMissingStub: null,
+      );
+}
+
+/// A class which mocks [RecommendationMovieBloc].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockRecommendationMovieBloc extends _i1.Mock
+    implements _i3.RecommendationMovieBloc {
+  MockRecommendationMovieBloc() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i3.RecommendationMovieState get state => (super.noSuchMethod(
+        Invocation.getter(#state),
+        returnValue: _FakeRecommendationMovieState_1(
+          this,
+          Invocation.getter(#state),
+        ),
+      ) as _i3.RecommendationMovieState);
+
+  @override
+  _i4.Stream<_i3.RecommendationMovieState> get stream => (super.noSuchMethod(
+        Invocation.getter(#stream),
+        returnValue: _i4.Stream<_i3.RecommendationMovieState>.empty(),
+      ) as _i4.Stream<_i3.RecommendationMovieState>);
+
+  @override
+  bool get isClosed => (super.noSuchMethod(
+        Invocation.getter(#isClosed),
+        returnValue: false,
+      ) as bool);
+
+  @override
+  void add(_i3.RecommendationMovieEvent? event) => super.noSuchMethod(
+        Invocation.method(
+          #add,
+          [event],
+        ),
+        returnValueForMissingStub: null,
+      );
+
+  @override
+  void onEvent(_i3.RecommendationMovieEvent? event) => super.noSuchMethod(
+        Invocation.method(
+          #onEvent,
+          [event],
+        ),
+        returnValueForMissingStub: null,
+      );
+
+  @override
+  void emit(_i3.RecommendationMovieState? state) => super.noSuchMethod(
+        Invocation.method(
+          #emit,
+          [state],
+        ),
+        returnValueForMissingStub: null,
+      );
+
+  @override
+  void on<E extends _i3.RecommendationMovieEvent>(
+    _i5.EventHandler<E, _i3.RecommendationMovieState>? handler, {
+    _i5.EventTransformer<E>? transformer,
+  }) =>
+      super.noSuchMethod(
+        Invocation.method(
+          #on,
+          [handler],
+          {#transformer: transformer},
+        ),
+        returnValueForMissingStub: null,
+      );
+
+  @override
+  void onTransition(
+          _i5.Transition<_i3.RecommendationMovieEvent,
+                  _i3.RecommendationMovieState>?
+              transition) =>
+      super.noSuchMethod(
+        Invocation.method(
+          #onTransition,
+          [transition],
+        ),
+        returnValueForMissingStub: null,
+      );
+
+  @override
+  _i4.Future<void> close() => (super.noSuchMethod(
+        Invocation.method(
+          #close,
+          [],
+        ),
+        returnValue: _i4.Future<void>.value(),
+        returnValueForMissingStub: _i4.Future<void>.value(),
+      ) as _i4.Future<void>);
+
+  @override
+  void onChange(_i5.Change<_i3.RecommendationMovieState>? change) =>
+      super.noSuchMethod(
         Invocation.method(
           #onChange,
           [change],
