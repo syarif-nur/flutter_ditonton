@@ -62,7 +62,7 @@ void main() {
     },
   );
 
-  blocTest(
+  blocTest<SearchBloc, SearchState>(
     'should emit [Loading, Error] when get search is unsuccessful',
     build: () {
       when(mockSearchMovies.execute(tQuery))

@@ -26,6 +26,7 @@ class DetailMovieBloc extends Bloc<DetailMovieEvent, DetailMovieState> {
     this._saveWatchlist,
     this._removeWatchlist,
   ) : super(DetailMovieInitial()) {
+
     on<DetailMovieFetched>((event, emit) async {
       emit(DetailMovieLoading());
 
