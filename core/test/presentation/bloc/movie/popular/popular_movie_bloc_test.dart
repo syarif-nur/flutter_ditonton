@@ -1,6 +1,5 @@
 import 'package:bloc_test/bloc_test.dart';
 import 'package:core/domain/usecases/get_popular_movies.dart';
-import 'package:core/presentation/bloc/movie/now_playing/now_playing_movie_bloc.dart';
 import 'package:core/presentation/bloc/movie/popular/popular_movie_bloc.dart';
 import 'package:core/utils/failure.dart';
 import 'package:dartz/dartz.dart';
