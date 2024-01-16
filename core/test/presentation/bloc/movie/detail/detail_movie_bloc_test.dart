@@ -13,7 +13,7 @@ import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 
 import '../../../../dummy_data/dummy_objects.dart';
-import '../../../provider/movie_detail_notifier_test.mocks.dart';
+import 'detail_movie_bloc_test.mocks.dart';
 
 @GenerateMocks([
   GetMovieDetail,
@@ -82,27 +82,7 @@ void main() {
       },
     );
 
-    // test('should change state to Loading when usecase is called', () {
-    //   // arrange
-    //   _arrangeUsecase();
-    //   // act
-    //   detailBloc.fetchMovieDetail(tId);
-    //   // assert
-    //   expect(bloc.movieState, RequestState.Loading);
-    //   expect(listenerCallCount, 1);
-    // });
 
-    //
-    // test('should change movie when data is gotten successfully', () async {
-    //   // arrange
-    //   _arrangeUsecase();
-    //   // act
-    //   await bloc.fetchMovieDetail(tId);
-    //   // assert
-    //   expect(bloc.movieState, RequestState.Loaded);
-    //   expect(bloc.movie, testMovieDetail);
-    //   expect(listenerCallCount, 3);
-    // });
   });
 
   group('Watchlist', () {
@@ -167,20 +147,6 @@ void main() {
       },
     );
 
-    // test('should update watchlist status when add watchlist success', () async {
-    //   // arrange
-    //   when(mockSaveWatchlist.execute(testMovieDetail))
-    //       .thenAnswer((_) async => Right('Added to Watchlist'));
-    //   when(mockGetWatchlistStatus.execute(testMovieDetail.id))
-    //       .thenAnswer((_) async => true);
-    //   // act
-    //   await bloc.addWatchlist(testMovieDetail);
-    //   // assert
-    //   verify(mockGetWatchlistStatus.execute(testMovieDetail.id));
-    //   expect(bloc.isAddedToWatchlist, true);
-    //   expect(bloc.watchlistMessage, 'Added to Watchlist');
-    //   expect(listenerCallCount, 1);
-    // });
 
     blocTest<DetailMovieBloc, DetailMovieState>(
       'should update watchlist status when add watchlist success',
@@ -203,18 +169,7 @@ void main() {
       },
     );
 
-    // test('should update watchlist message when add watchlist failed', () async {
-    //   // arrange
-    //   when(mockSaveWatchlist.execute(testMovieDetail))
-    //       .thenAnswer((_) async => Left(DatabaseFailure('Failed')));
-    //   when(mockGetWatchlistStatus.execute(testMovieDetail.id))
-    //       .thenAnswer((_) async => false);
-    //   // act
-    //   await bloc.addWatchlist(testMovieDetail);
-    //   // assert
-    //   expect(bloc.watchlistMessage, 'Failed');
-    //   expect(listenerCallCount, 1);
-    // });
+
 
     blocTest<DetailMovieBloc, DetailMovieState>(
       'should update watchlist status when add watchlist faild',
