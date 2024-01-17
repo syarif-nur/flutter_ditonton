@@ -7,6 +7,12 @@ import 'package:core/presentation/bloc/movie/popular/popular_movie_bloc.dart';
 import 'package:core/presentation/bloc/movie/recommendation/recommendation_movie_bloc.dart';
 import 'package:core/presentation/bloc/movie/top_rated/top_rated_movie_bloc.dart';
 import 'package:core/presentation/bloc/movie/watchlist/watchlist_movie_bloc.dart';
+import 'package:core/presentation/bloc/tv/detail/detail_tv_bloc.dart';
+import 'package:core/presentation/bloc/tv/now_playing/now_playing_tv_bloc.dart';
+import 'package:core/presentation/bloc/tv/popular/popular_tv_bloc.dart';
+import 'package:core/presentation/bloc/tv/recommendation/recommendation_tv_bloc.dart';
+import 'package:core/presentation/bloc/tv/top_rated/top_rated_tv_bloc.dart';
+import 'package:core/presentation/bloc/tv/watchlist/watchlist_tv_bloc.dart';
 import 'package:core/styles/colors.dart';
 import 'package:core/styles/text_styles.dart';
 import 'package:core/utils/utils.dart';
@@ -71,38 +77,24 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocListener(
       listeners: [
-        ChangeNotifierProvider(
-          create: (_) => di.locator<MovieListNotifier>(),
+        BlocProvider(
+          create: (_) => di.locator<DetailTvBloc>(),
         ),
-        ChangeNotifierProvider(
-          create: (_) => di.locator<MovieDetailNotifier>(),
+        BlocProvider(
+          create: (_) => di.locator<RecommendationTvBloc>(),
         ),
-        ChangeNotifierProvider(
-          create: (_) => di.locator<TopRatedMoviesNotifier>(),
+        BlocProvider(
+          create: (_) => di.locator<WatchlistTvBloc>(),
         ),
-        ChangeNotifierProvider(
-          create: (_) => di.locator<PopularMoviesNotifier>(),
+        BlocProvider(
+          create: (_) => di.locator<PopularTvBloc>()..add(PopularTvFetched()),
         ),
-        ChangeNotifierProvider(
-          create: (_) => di.locator<WatchlistMovieNotifier>(),
+        BlocProvider(
+          create: (_) => di.locator<TopRatedTvBloc>()..add(TopRatedTvFetched()),
         ),
-        ChangeNotifierProvider(
-          create: (_) => di.locator<TvListNotifier>(),
-        ),
-        ChangeNotifierProvider(
-          create: (_) => di.locator<TvDetailNotifier>(),
-        ),
-        ChangeNotifierProvider(
-          create: (_) => di.locator<WatchListTvNotifier>(),
-        ),
-        ChangeNotifierProvider(
-          create: (_) => di.locator<PopularTvNotifier>(),
-        ),
-        ChangeNotifierProvider(
-          create: (_) => di.locator<TopRatedTvNotifier>(),
-        ),
-        ChangeNotifierProvider(
-          create: (_) => di.locator<NowPlayingTvNotifier>(),
+        BlocProvider(
+          create: (_) =>
+              di.locator<NowPlayingTvBloc>()..add(NowPlayingTvFetched()),
         ),
         BlocProvider(
           create: (_) => di.locator<SearchBloc>(),

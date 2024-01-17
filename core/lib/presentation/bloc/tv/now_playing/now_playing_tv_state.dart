@@ -1,5 +1,6 @@
 part of 'now_playing_tv_bloc.dart';
 
+@immutable
 abstract class NowPlayingTvState extends Equatable {
   const NowPlayingTvState();
 
