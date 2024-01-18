@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:core/data/models/tv_model.dart';
 import 'package:equatable/equatable.dart';
 

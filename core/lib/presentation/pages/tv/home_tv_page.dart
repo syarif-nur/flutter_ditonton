@@ -3,18 +3,15 @@ import 'package:core/presentation/bloc/tv/now_playing/now_playing_tv_bloc.dart';
 import 'package:core/presentation/bloc/tv/popular/popular_tv_bloc.dart';
 import 'package:core/presentation/bloc/tv/top_rated/top_rated_tv_bloc.dart';
 import 'package:core/presentation/pages/tv/popular_tv_page.dart';
-import 'package:core/utils/routes.dart';
 import 'package:core/presentation/pages/tv/top_rated_tv_page.dart';
 import 'package:core/presentation/pages/tv/tv_detail_page.dart';
+import 'package:core/utils/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:provider/provider.dart';
 
 import '../../../domain/entities/tv.dart';
 import '../../../styles/text_styles.dart';
 import '../../../utils/constants.dart';
-import '../../../utils/state_enum.dart';
-import '../../provider/tv_list_notifier.dart';
 import 'now_playing_tv_page.dart';
 
 class HomeTvPage extends StatefulWidget {

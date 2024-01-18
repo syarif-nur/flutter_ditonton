@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:bloc/bloc.dart';
 import 'package:core/domain/entities/tv_detail.dart';
 import 'package:core/domain/usecases/remove_watchlist_tv.dart';
@@ -10,13 +8,12 @@ import '../../../../domain/usecases/get_tv_detail.dart';
 import '../../../../domain/usecases/get_watchlist_status_tv.dart';
 
 part 'detail_tv_event.dart';
-
 part 'detail_tv_state.dart';
 
 class DetailTvBloc extends Bloc<DetailTvEvent, DetailTvState> {
   final GetTvDetail _getTvDetail;
   final GetWatchListStatusTv _getWatchListStatusTv;
-  final SaveWatchListTv _saveWatchListTv;
+  final SaveWatchlistTv _saveWatchListTv;
   final RemoveWatchlistTv _removeWatchlistTv;
 
   DetailTvBloc(

@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:bloc/bloc.dart';
 import 'package:core/domain/usecases/get_tv_recommendations.dart';
 import 'package:equatable/equatable.dart';
@@ -7,7 +5,6 @@ import 'package:equatable/equatable.dart';
 import '../../../../domain/entities/tv.dart';
 
 part 'recommendation_tv_event.dart';
-
 part 'recommendation_tv_state.dart';
 
 class RecommendationTvBloc

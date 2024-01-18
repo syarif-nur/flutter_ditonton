@@ -1,4 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:core/presentation/bloc/movie/popular/popular_movie_bloc.dart';
 import 'package:core/presentation/bloc/movie/top_rated/top_rated_movie_bloc.dart';
 import 'package:core/presentation/pages/movie/popular_movies_page.dart';

@@ -1,5 +1,5 @@
-import 'package:core/presentation/bloc/movie/popular/popular_movie_bloc.dart';
 import 'package:core/domain/entities/movie.dart';
+import 'package:core/presentation/bloc/movie/popular/popular_movie_bloc.dart';
 import 'package:core/presentation/pages/movie/popular_movies_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

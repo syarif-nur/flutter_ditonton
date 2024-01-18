@@ -5,7 +5,6 @@ import 'package:equatable/equatable.dart';
 import '../../../../domain/usecases/get_popular_tv.dart';
 
 part 'popular_tv_event.dart';
-
 part 'popular_tv_state.dart';
 
 class PopularTvBloc extends Bloc<PopularTvEvent, PopularTvState> {

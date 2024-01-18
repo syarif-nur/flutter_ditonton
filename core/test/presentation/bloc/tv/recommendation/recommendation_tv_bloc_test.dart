@@ -1,0 +1,95 @@
+import 'package:bloc_test/bloc_test.dart';
+import 'package:core/domain/entities/tv.dart';
+import 'package:core/domain/usecases/get_tv_recommendations.dart';
+import 'package:core/presentation/bloc/tv/recommendation/recommendation_tv_bloc.dart';
+import 'package:core/utils/failure.dart';
+import 'package:dartz/dartz.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:mockito/annotations.dart';
+import 'package:mockito/mockito.dart';
+
+import 'recommendation_tv_bloc_test.mocks.dart';
+
+@GenerateMocks([GetTvRecommendations])
+void main() {
+  late RecommendationTvBloc bloc;
+  late MockGetTvRecommendations mockGetTvRecommendations;
+
+  setUp(() {
+    mockGetTvRecommendations = MockGetTvRecommendations();
+    bloc = RecommendationTvBloc(mockGetTvRecommendations);
+  });
+
+  final testTv = Tv(
+    backdropPath: "/9In9QgVJx7PlFOAgVHCKKSbo605.jpg",
+    genreIds: [16, 35, 10765, 10759],
+    id: 1,
+    originalName: "Rick and Morty",
+    overview:
+        "Rick is a mentally-unbalanced but scientifically gifted old man who has recently reconnected with his family. He spends most of his time involving his young grandson Morty in dangerous, outlandish adventures throughout space and alternate universes. Compounded with Morty's already unstable family life, these events cause Morty much distress at home and school.",
+    popularity: 1386.559,
+    posterPath: "/cvhNj9eoRBe5SxjCbQTkh05UP5K.jpg",
+    firstAirDate: "2013-12-02",
+    name: "Rick and Morty",
+    voteAverage: 8.701,
+    voteCount: 8572,
+    originCountry: ["US"],
+    originalLanguage: "en",
+  );
+
+  final tTvList = <Tv>[testTv];
+  const tId = 1;
+
+  group('recommendation tv', () {
+    test('initialState should be Empty', () {
+      expect(bloc.state, RecommendationTvInitial());
+    });
+
+    blocTest<RecommendationTvBloc, RecommendationTvState>(
+      'Should emit [Loading, HasData] when data is gotten successfully',
+      build: () {
+        when(mockGetTvRecommendations.execute(tId))
+            .thenAnswer((_) async => Right(tTvList));
+        return bloc;
+      },
+      act: (bloc) => bloc.add(const RecommendationTvFetched(tId)),
+      expect: () => [
+        RecommendationTvLoading(),
+        RecommendationTvHasData(tTvList),
+      ],
+      verify: (bloc) {
+        verify(mockGetTvRecommendations.execute(tId));
+      },
+    );
+
+    blocTest<RecommendationTvBloc, RecommendationTvState>(
+      'should change state to Loading when usecase is called',
+      build: () {
+        when(mockGetTvRecommendations.execute(tId))
+            .thenAnswer((_) async => Right(tTvList));
+        return bloc;
+      },
+      act: (bloc) => bloc.emit(RecommendationTvLoading()),
+      expect: () => [
+        RecommendationTvLoading(),
+      ],
+    );
+
+    blocTest<RecommendationTvBloc, RecommendationTvState>(
+      'should emit [Loading, Error] when get search is unsuccessful',
+      build: () {
+        when(mockGetTvRecommendations.execute(tId))
+            .thenAnswer((_) async => Left(ServerFailure('Server Failure')));
+        return bloc;
+      },
+      act: (bloc) => bloc.add(const RecommendationTvFetched(tId)),
+      expect: () => [
+        RecommendationTvLoading(),
+        const RecommendationTvError('Server Failure'),
+      ],
+      verify: (bloc) {
+        verify(mockGetTvRecommendations.execute(tId));
+      },
+    );
+  });
+}

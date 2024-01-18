@@ -1,11 +1,7 @@
 import 'package:core/presentation/bloc/tv/now_playing/now_playing_tv_bloc.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:provider/provider.dart';
 
-import '../../../utils/state_enum.dart';
-import '../../provider/now_playing_tv_notifier.dart';
 import '../../widgets/tv_card_list.dart';
 
 class NowPlayingTvPage extends StatefulWidget {

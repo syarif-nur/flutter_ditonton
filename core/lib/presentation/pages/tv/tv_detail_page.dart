@@ -4,10 +4,8 @@ import 'package:core/presentation/bloc/tv/recommendation/recommendation_tv_bloc.
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:provider/provider.dart';
 
 import '../../../domain/entities/genre.dart';
-import '../../../domain/entities/tv.dart';
 import '../../../domain/entities/tv_detail.dart';
 import '../../../styles/colors.dart';
 import '../../../styles/text_styles.dart';

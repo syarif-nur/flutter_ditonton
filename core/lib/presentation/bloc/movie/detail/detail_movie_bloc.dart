@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:bloc/bloc.dart';
 import 'package:core/domain/entities/movie_detail.dart';
 import 'package:core/domain/usecases/get_watchlist_status.dart';
@@ -11,7 +9,6 @@ import '../../../../domain/usecases/get_movie_detail.dart';
 import '../../../../domain/usecases/save_watchlist.dart';
 
 part 'detail_movie_event.dart';
-
 part 'detail_movie_state.dart';
 
 class DetailMovieBloc extends Bloc<DetailMovieEvent, DetailMovieState> {

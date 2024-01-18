@@ -1,11 +1,7 @@
-import 'package:core/presentation/bloc/tv/now_playing/now_playing_tv_bloc.dart';
 import 'package:core/presentation/bloc/tv/popular/popular_tv_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:provider/provider.dart';
 
-import '../../../utils/state_enum.dart';
-import '../../provider/popular_tv_notifier.dart';
 import '../../widgets/tv_card_list.dart';
 
 class PopularTvPage extends StatefulWidget {

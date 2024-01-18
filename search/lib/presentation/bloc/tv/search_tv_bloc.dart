@@ -1,15 +1,12 @@
-import 'dart:async';
-
 import 'package:bloc/bloc.dart';
 import 'package:core/domain/entities/tv.dart';
-import 'package:meta/meta.dart';
 import 'package:equatable/equatable.dart';
+import 'package:meta/meta.dart';
 import 'package:rxdart/rxdart.dart';
 
 import '../../../domain/usecase/search_tv.dart';
 
 part 'search_tv_event.dart';
-
 part 'search_tv_state.dart';
 
 class SearchTvBloc extends Bloc<SearchTvEvent, SearchTvState> {
