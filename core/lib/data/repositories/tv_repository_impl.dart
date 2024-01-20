@@ -33,6 +33,8 @@ class TvRepositoryImpl implements TvRepository {
         return Right(result.map((model) => model.toEntity()).toList());
       } on ServerException {
         return Left(ServerFailure(''));
+      } on TlsException {
+        return Left(SSLFailure('CERTIFICATE_VERIFY_FAILED'));
       }
     } else {
       try {

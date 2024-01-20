@@ -12,7 +12,6 @@ import '../datasources/movie_local_data_source.dart';
 import '../datasources/movie_remote_data_source.dart';
 import '../models/movie_table.dart';
 
-
 class MovieRepositoryImpl implements MovieRepository {
   final MovieRemoteDataSource remoteDataSource;
   final MovieLocalDataSource localDataSource;
@@ -34,12 +33,14 @@ class MovieRepositoryImpl implements MovieRepository {
         return Right(result.map((model) => model.toEntity()).toList());
       } on ServerException {
         return Left(ServerFailure(''));
+      } on TlsException {
+        return Left(SSLFailure('CERTIFICATE_VERIFY_FAILED'));
       }
     } else {
-      try{
+      try {
         final result = await localDataSource.getCachedNowPlayingMovies();
         return Right(result.map((model) => model.toEntity()).toList());
-      }on CacheException  catch(e){
+      } on CacheException catch (e) {
         return Left(CacheFailure(e.message));
       }
     }
